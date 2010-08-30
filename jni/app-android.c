@@ -72,7 +72,7 @@ Java_cc_co_androidzoo_jplayerg_PlayerRenderer_nativeDone( JNIEnv*  env )
  * stop as soon as possible.
  */
 void
-Java_com_example_SanAngeles_DemoGLSurfaceView_nativePause( JNIEnv*  env )
+Java_cc_co_androidzoo_jplayerg_PlayerRenderer_nativePause( JNIEnv*  env )
 {
     sDemoStopped = !sDemoStopped;
     if (sDemoStopped) {

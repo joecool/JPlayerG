@@ -752,6 +752,7 @@ static void camTrack()
  */
 void appRender(long tick, int width, int height)
 {
+/*
     if (sStartTick == 0)
         sStartTick = tick;
     if (!gAppAlive)
@@ -789,4 +790,5 @@ void appRender(long tick, int width, int height)
 
     // Draw fade quad over whole window (when changing cameras).
     drawFadeQuad();
+    */
 }
