@@ -39,7 +39,7 @@
  * Fixing the program to send less polygons to the GPU is left
  * as an exercise to the reader. As always, patches welcomed :-)
  */
-package com.example.SanAngeles;
+package cc.co.androidzoo.jplayerg;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -50,11 +50,11 @@ import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.view.MotionEvent;
 
-public class DemoActivity extends Activity {
+public class playerUI extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mGLView = new DemoGLSurfaceView(this);
+        mGLView = new PlayerGLSurfaceView(this);
         setContentView(mGLView);
     }
 
@@ -73,14 +73,14 @@ public class DemoActivity extends Activity {
     private GLSurfaceView mGLView;
 
     static {
-        System.loadLibrary("sanangeles");
+        System.loadLibrary("core");
     }
 }
 
-class DemoGLSurfaceView extends GLSurfaceView {
-    public DemoGLSurfaceView(Context context) {
+class PlayerGLSurfaceView extends GLSurfaceView {
+    public PlayerGLSurfaceView(Context context) {
         super(context);
-        mRenderer = new DemoRenderer();
+        mRenderer = new PlayerRenderer();
         setRenderer(mRenderer);
     }
 
@@ -91,12 +91,12 @@ class DemoGLSurfaceView extends GLSurfaceView {
         return true;
     }
 
-    DemoRenderer mRenderer;
+    PlayerRenderer mRenderer;
 
     private static native void nativePause();
 }
 
-class DemoRenderer implements GLSurfaceView.Renderer {
+class PlayerRenderer implements GLSurfaceView.Renderer {
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         nativeInit();
     }

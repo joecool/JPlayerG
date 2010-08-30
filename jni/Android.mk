@@ -2,7 +2,7 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := sanangeles
+LOCAL_MODULE := core
 
 LOCAL_CFLAGS := -DANDROID_NDK \
                 -DDISABLE_IMPORTGL

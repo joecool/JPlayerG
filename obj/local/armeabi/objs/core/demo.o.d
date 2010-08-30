@@ -1,5 +1,5 @@
-/cygdrive/d/Tools/Android/NDK/android-ndk-r4b/samples/san-angeles/obj/local/armeabi/objs/sanangeles/demo.o: \
- /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/samples/san-angeles/jni/demo.c \
+/home/XNG687/Works/git-repo/JPlayerG/obj/local/armeabi/objs/core/demo.o: \
+ /home/XNG687/Works/git-repo/JPlayerG/jni/demo.c \
  /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/build/platforms/android-4/arch-arm/usr/include/stdlib.h \
  /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/build/platforms/android-4/arch-arm/usr/include/sys/cdefs.h \
  /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/build/platforms/android-4/arch-arm/usr/include/sys/cdefs_elf.h \
@@ -27,13 +27,13 @@
  /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/build/platforms/android-4/arch-arm/usr/include/machine/internal_types.h \
  /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/build/platforms/android-4/arch-arm/usr/include/machine/limits.h \
  /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/build/platforms/android-4/arch-arm/usr/include/assert.h \
- /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/samples/san-angeles/jni/importgl.h \
+ /home/XNG687/Works/git-repo/JPlayerG/jni/importgl.h \
  /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/build/platforms/android-4/arch-arm/usr/include/GLES/gl.h \
  /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/build/platforms/android-4/arch-arm/usr/include/GLES/glplatform.h \
  /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/build/platforms/android-4/arch-arm/usr/include/KHR/khrplatform.h \
- /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/samples/san-angeles/jni/app.h \
- /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/samples/san-angeles/jni/shapes.h \
- /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/samples/san-angeles/jni/cams.h
+ /home/XNG687/Works/git-repo/JPlayerG/jni/app.h \
+ /home/XNG687/Works/git-repo/JPlayerG/jni/shapes.h \
+ /home/XNG687/Works/git-repo/JPlayerG/jni/cams.h
 
 /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/build/platforms/android-4/arch-arm/usr/include/stdlib.h:
 
@@ -89,7 +89,7 @@
 
 /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/build/platforms/android-4/arch-arm/usr/include/assert.h:
 
-/cygdrive/d/Tools/Android/NDK/android-ndk-r4b/samples/san-angeles/jni/importgl.h:
+/home/XNG687/Works/git-repo/JPlayerG/jni/importgl.h:
 
 /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/build/platforms/android-4/arch-arm/usr/include/GLES/gl.h:
 
@@ -97,8 +97,8 @@
 
 /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/build/platforms/android-4/arch-arm/usr/include/KHR/khrplatform.h:
 
-/cygdrive/d/Tools/Android/NDK/android-ndk-r4b/samples/san-angeles/jni/app.h:
+/home/XNG687/Works/git-repo/JPlayerG/jni/app.h:
 
-/cygdrive/d/Tools/Android/NDK/android-ndk-r4b/samples/san-angeles/jni/shapes.h:
+/home/XNG687/Works/git-repo/JPlayerG/jni/shapes.h:
 
-/cygdrive/d/Tools/Android/NDK/android-ndk-r4b/samples/san-angeles/jni/cams.h:
+/home/XNG687/Works/git-repo/JPlayerG/jni/cams.h:

@@ -1,5 +1,5 @@
-/cygdrive/d/Tools/Android/NDK/android-ndk-r4b/samples/san-angeles/obj/local/armeabi/objs/sanangeles/app-android.o: \
- /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/samples/san-angeles/jni/app-android.c \
+/home/XNG687/Works/git-repo/JPlayerG/obj/local/armeabi/objs/core/app-android.o: \
+ /home/XNG687/Works/git-repo/JPlayerG/jni/app-android.c \
  /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/build/platforms/android-4/arch-arm/usr/include/jni.h \
  /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/build/platforms/android-4/arch-arm/usr/include/sys/time.h \
  /cygdrive/d/Tools/Android/NDK/android-ndk-r4b/build/platforms/android-4/arch-arm/usr/include/sys/cdefs.h \
