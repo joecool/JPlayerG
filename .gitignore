@@ -1,0 +1,6 @@
+*.apk
+*.class
+*.dex
+*.ap_
+*.so
+*~
