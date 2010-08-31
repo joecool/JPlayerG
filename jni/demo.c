@@ -42,7 +42,8 @@
 
 
 static unsigned long sRandomSeed = 0;
-
+static GLfloat* point;
+    
 static void seedRandom(unsigned long seed)
 {
     sRandomSeed = seed;
@@ -463,7 +464,7 @@ static void drawFadeQuad()
 void appInit()
 {
     int a;
-
+    int i, j;
     glEnable(GL_NORMALIZE);
     glEnable(GL_DEPTH_TEST);
     glDisable(GL_CULL_FACE);
@@ -486,6 +487,15 @@ void appInit()
     }
     sGroundPlane = createGroundPlane();
     assert(sGroundPlane != NULL);
+    /*
+    point = (GLfloat*)malloc(320*240*2*sizeof(GLfloat));
+    for(i=0; i<320; i++)
+        for(j=0; j<240 * 2; j+=2)
+        {
+            point[i*480 + j] = i * 1.0;
+            point[i*480 + j + 1] = j * 0.5;
+        }
+        */
 }
 
 
@@ -523,14 +533,14 @@ static void prepareFrame(int width, int height)
                   (GLfixed)(0.2f * 65536),
                   (GLfixed)(0.3f * 65536), 0x10000);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-
+/*
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluPerspective(45, (float)width / height, 0.5f, 150);
 
     glMatrixMode(GL_MODELVIEW);
 
-    glLoadIdentity();
+    glLoadIdentity();*/
 }
 
 
@@ -752,6 +762,19 @@ static void camTrack()
  */
 void appRender(long tick, int width, int height)
 {
+const GLfloat squareVertices[] = {
+
+        -1.0, 1.0,             // Top left
+        -1.0, -1.0,          // Bottom left
+        1.0, -1.0,            // Bottom right
+        1.0, 1.0,        // Top right
+
+    };
+    prepareFrame(width, height);
+
+    glVertexPointer(2, GL_FLOAT, 0, squareVertices);
+    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+
 /*
     if (sStartTick == 0)
         sStartTick = tick;
