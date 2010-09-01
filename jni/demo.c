@@ -42,6 +42,8 @@
 
 
 static unsigned long sRandomSeed = 0;
+static GLfloat* point;
+static GLubyte* color;
 
 static void seedRandom(unsigned long seed)
 {
@@ -463,7 +465,7 @@ static void drawFadeQuad()
 void appInit()
 {
     int a;
-
+    int i, j;
     glEnable(GL_NORMALIZE);
     glEnable(GL_DEPTH_TEST);
     glDisable(GL_CULL_FACE);
@@ -486,6 +488,24 @@ void appInit()
     }
     sGroundPlane = createGroundPlane();
     assert(sGroundPlane != NULL);
+    
+    point = (GLfloat*)malloc(320*240*2*sizeof(GLfloat));
+    color = (GLubyte*)malloc(320*240*3*sizeof(GLubyte));
+    for(i=0; i<320; i++)
+        for(j=0; j<240 * 2; j+=2)
+        {
+            point[i*480 + j + 1] = ((GLfloat)(i*1.0-160.0))/427.0;
+            point[i*480 + j] = ((GLfloat)(j * 0.5) - 120.0)/240.0;
+        }
+        
+    for(i=0; i<320; i++)
+        for(j=0; j<240 * 3; j+=3)
+        {
+            color[i*720 + j] = 255;
+            color[i*720 + j + 1] = 0;
+            color[i*720 + j + 2] = 0;
+        }
+        
 }
 
 
@@ -523,14 +543,14 @@ static void prepareFrame(int width, int height)
                   (GLfixed)(0.2f * 65536),
                   (GLfixed)(0.3f * 65536), 0x10000);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-
+/*
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluPerspective(45, (float)width / height, 0.5f, 150);
 
     glMatrixMode(GL_MODELVIEW);
 
-    glLoadIdentity();
+    glLoadIdentity();*/
 }
 
 
@@ -752,6 +772,23 @@ static void camTrack()
  */
 void appRender(long tick, int width, int height)
 {
+const GLfloat squareVertices[] = {
+
+        -1.0, 1.0,             // Top left
+        -1.0, -1.0,          // Bottom left
+        1.0, -1.0,            // Bottom right
+        1.0, 1.0,        // Top right
+
+    };
+    prepareFrame(width, height);
+
+    glVertexPointer(2, GL_FLOAT, 0, point);
+    glColorPointer(3, GL_UNSIGNED_BYTE, 0, color);
+    
+    glDrawArrays(GL_POINTS, 0, 320*240);
+          //          glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 256, 256, 0, GL_RGB,
+          //              GL_UNSIGNED_SHORT_5_6_5, point);
+
 /*
     if (sStartTick == 0)
         sStartTick = tick;
