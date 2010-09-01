@@ -43,7 +43,8 @@
 
 static unsigned long sRandomSeed = 0;
 static GLfloat* point;
-    
+static GLubyte* color;
+
 static void seedRandom(unsigned long seed)
 {
     sRandomSeed = seed;
@@ -487,15 +488,24 @@ void appInit()
     }
     sGroundPlane = createGroundPlane();
     assert(sGroundPlane != NULL);
-    /*
+    
     point = (GLfloat*)malloc(320*240*2*sizeof(GLfloat));
+    color = (GLubyte*)malloc(320*240*3*sizeof(GLubyte));
     for(i=0; i<320; i++)
         for(j=0; j<240 * 2; j+=2)
         {
-            point[i*480 + j] = i * 1.0;
-            point[i*480 + j + 1] = j * 0.5;
+            point[i*480 + j + 1] = ((GLfloat)(i*1.0-160.0))/427.0;
+            point[i*480 + j] = ((GLfloat)(j * 0.5) - 120.0)/240.0;
         }
-        */
+        
+    for(i=0; i<320; i++)
+        for(j=0; j<240 * 3; j+=3)
+        {
+            color[i*720 + j] = 255;
+            color[i*720 + j + 1] = 0;
+            color[i*720 + j + 2] = 0;
+        }
+        
 }
 
 
@@ -772,8 +782,12 @@ const GLfloat squareVertices[] = {
     };
     prepareFrame(width, height);
 
-    glVertexPointer(2, GL_FLOAT, 0, squareVertices);
-    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+    glVertexPointer(2, GL_FLOAT, 0, point);
+    glColorPointer(3, GL_UNSIGNED_BYTE, 0, color);
+    
+    glDrawArrays(GL_POINTS, 0, 320*240);
+          //          glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 256, 256, 0, GL_RGB,
+          //              GL_UNSIGNED_SHORT_5_6_5, point);
 
 /*
     if (sStartTick == 0)
