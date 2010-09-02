@@ -466,21 +466,21 @@ void appInit()
 {
     int a;
     int i, j;
-    glEnable(GL_NORMALIZE);
-    glEnable(GL_DEPTH_TEST);
+    glDisable(GL_NORMALIZE);
+    glDisable(GL_DEPTH_TEST);
     glDisable(GL_CULL_FACE);
-    glShadeModel(GL_FLAT);
-
-    glEnable(GL_LIGHTING);
-    glEnable(GL_LIGHT0);
-    glEnable(GL_LIGHT1);
-    glEnable(GL_LIGHT2);
+    glShadeModel(GL_SMOOTH);
+ //glEnable(GL_BLEND);
+    glDisable(GL_LIGHTING);
+    glDisable(GL_LIGHT0);
+    glDisable(GL_LIGHT1);
+    glDisable(GL_LIGHT2);
 
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_COLOR_ARRAY);
 
     seedRandom(15);
-
+/*
     for (a = 0; a < SUPERSHAPE_COUNT; ++a)
     {
         sSuperShapeObjects[a] = createSuperShape(sSuperShapeParams[a]);
@@ -488,9 +488,9 @@ void appInit()
     }
     sGroundPlane = createGroundPlane();
     assert(sGroundPlane != NULL);
-    
+    */
     point = (GLfloat*)malloc(320*240*2*sizeof(GLfloat));
-    color = (GLubyte*)malloc(320*240*3*sizeof(GLubyte));
+    color = (GLubyte*)malloc(320*240*4*sizeof(GLubyte));
     for(i=0; i<320; i++)
         for(j=0; j<240 * 2; j+=2)
         {
@@ -499,11 +499,12 @@ void appInit()
         }
         
     for(i=0; i<320; i++)
-        for(j=0; j<240 * 3; j+=3)
+        for(j=0; j<240 * 4; j+=4)
         {
-            color[i*720 + j] = 255;
-            color[i*720 + j + 1] = 0;
-            color[i*720 + j + 2] = 0;
+            color[i*960 + j] = 127;
+            color[i*960 + j + 1] = 127;
+            color[i*960 + j + 2] = 127;
+            color[i*960 + j + 3] = 0;
         }
         
 }
@@ -543,14 +544,14 @@ static void prepareFrame(int width, int height)
                   (GLfixed)(0.2f * 65536),
                   (GLfixed)(0.3f * 65536), 0x10000);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-/*
+
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(45, (float)width / height, 0.5f, 150);
+    //gluPerspective(45, (float)width / height, 0.5f, 150);
 
     glMatrixMode(GL_MODELVIEW);
 
-    glLoadIdentity();*/
+    glLoadIdentity();
 }
 
 
@@ -780,52 +781,17 @@ const GLfloat squareVertices[] = {
         1.0, 1.0,        // Top right
 
     };
-    prepareFrame(width, height);
+    //prepareFrame(width, height);
+
 
     glVertexPointer(2, GL_FLOAT, 0, point);
-    glColorPointer(3, GL_UNSIGNED_BYTE, 0, color);
+    glColor4f(1.0, 0.0, 0.0, 1.0);
     
+    //glColorPointer(4, GL_UNSIGNED_BYTE, 0, color);
+    //glDisableClientState(GL_NORMAL_ARRAY);
     glDrawArrays(GL_POINTS, 0, 320*240);
           //          glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 256, 256, 0, GL_RGB,
           //              GL_UNSIGNED_SHORT_5_6_5, point);
 
-/*
-    if (sStartTick == 0)
-        sStartTick = tick;
-    if (!gAppAlive)
-        return;
 
-    // Actual tick value is "blurred" a little bit.
-    sTick = (sTick + tick - sStartTick) >> 1;
-
-    // Terminate application after running through the demonstration once.
-    if (sTick >= RUN_LENGTH)
-    {
-        gAppAlive = 0;
-        return;
-    }
-
-    // Prepare OpenGL ES for rendering of the frame.
-    prepareFrame(width, height);
-
-    // Update the camera position and set the lookat.
-    camTrack();
-
-    // Configure environment.
-    configureLightAndMaterial();
-
-    // Draw the reflection by drawing models with negated Z-axis.
-    glPushMatrix();
-    drawModels(-1);
-    glPopMatrix();
-
-    // Blend the ground plane to the window.
-    drawGroundPlane();
-
-    // Draw all the models normally.
-    drawModels(1);
-
-    // Draw fade quad over whole window (when changing cameras).
-    drawFadeQuad();
-    */
 }
